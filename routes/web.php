@@ -52,3 +52,6 @@ Route::get('/team', function () {
 Route::get('/testimonial', function () {
     return view('testimonial');
 });
+Route::get('/welcome', function () {
+    return view('welcome');
+});
