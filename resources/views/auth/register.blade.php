@@ -69,7 +69,7 @@
 
   <!-- Navbar & Hero Start -->
   <div class="container-fluid position-relative p-0">
-    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark px-4 px-lg-5 py-3 py-lg-0">
       <a href="" class="navbar-brand p-0">
         <h1 class="text-primary m-0">
           <i class="fa fa-map-marker-alt me-3"></i>BD Tourist
@@ -104,35 +104,39 @@
       </div>
     </nav>
 
-    <div class="container-fluid bg-primary py-5 mb-5 hero-header">
+    {{--<div class="container-fluid bg-primary py-5 mb-5 hero-header">
       <div class="container py-5">
         <div class="row justify-content-center py-5">
           <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
             <h1 class="display-3 text-white animated slideInDown">
-              Log In To Use Our Services.
+              Register To Use Our Services.
             </h1>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb justify-content-center">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Pages</a></li>
                 <li class="breadcrumb-item text-white active" aria-current="page">
-                  Log in
+                  Register
                 </li>
               </ol>
             </nav>
           </div>
         </div>
       </div>
-    </div>
+    </div>--}}
   </div>
   <!-- Navbar & Hero End -->
 
   <!-- 404 Start -->
-  <div class="container-xxl wow fadeInUp" data-wow-delay="0.1s">
-    <div class="container p-md-5" style="max-width: 500px">
+  {{--<div class="container-xxl wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container p-md-5" style="max-width: 600px">
       <div class="text-center">
         <!-- login form start -->
         <form>
+          <div class="form-floating mb-5 shadow-sm">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Your Name" required />
+            <label for="floatingInput">Full Name</label>
+          </div>
           <div class="form-floating mb-5 shadow-sm">
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required />
             <label for="floatingInput">Email address</label>
@@ -141,16 +145,86 @@
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required />
             <label for="floatingPassword">Password</label>
           </div>
+          <div class="form-floating mb-5 shadow-sm">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required />
+            <label for="floatingPassword">Confirm Password</label>
+          </div>
           <button type="submit" class="btn btn-primary btn-lg w-100">
-            Log In
+            Sign Up
           </button>
-          <a class="d-block mt-3" href="/register">Don't have an account?</a>
+          <a class="d-block mt-3" href="/login">Already have an account?</a>
         </form>
+
         <!-- login form end -->
       </div>
     </div>
-  </div>
-  <!-- 404 End -->
+  </div>--}}
+
+  <x-guest-layout>
+      <x-auth-card>
+          <x-slot name="logo">
+              <a href="/">
+                  <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+              </a>
+          </x-slot>
+
+          <form method="POST" action="{{ route('register') }}">
+              @csrf
+
+              <!-- Name -->
+              <div>
+                  <x-input-label for="name" :value="__('Name')" />
+
+                  <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+
+                  <x-input-error :messages="$errors->get('name')" class="mt-2" />
+              </div>
+
+              <!-- Email Address -->
+              <div class="mt-4">
+                  <x-input-label for="email" :value="__('Email')" />
+
+                  <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+
+                  <x-input-error :messages="$errors->get('email')" class="mt-2" />
+              </div>
+
+              <!-- Password -->
+              <div class="mt-4">
+                  <x-input-label for="password" :value="__('Password')" />
+
+                  <x-text-input id="password" class="block mt-1 w-full"
+                                type="password"
+                                name="password"
+                                required autocomplete="new-password" />
+
+                  <x-input-error :messages="$errors->get('password')" class="mt-2" />
+              </div>
+
+              <!-- Confirm Password -->
+              <div class="mt-4">
+                  <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+                  <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                                type="password"
+                                name="password_confirmation" required />
+
+                  <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+              </div>
+
+              <div class="flex items-center justify-end mt-4">
+                  <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
+                      {{ __('Already registered?') }}
+                  </a>
+
+                  <x-primary-button class="ml-4">
+                      {{ __('Register') }}
+                  </x-primary-button>
+              </div>
+          </form>
+      </x-auth-card>
+  </x-guest-layout>
+
 
   <!-- Footer Start -->
   <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -227,8 +301,8 @@
             Right Reserved.
 
             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-            Designed By
-            <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+            <!-- Designed By
+          <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> -->
           </div>
           <div class="col-md-6 text-center text-md-end">
             <div class="footer-menu">
