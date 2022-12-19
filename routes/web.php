@@ -32,18 +32,12 @@ Route::get('/contact', function () {
 Route::get('/destination', function () {
     return view('destination');
 });
-//Route::get('/login', function () {
-//    return view('login');
-//});
 Route::get('/maps', function () {
     return view('maps');
 });
 Route::get('/package', function () {
     return view('package');
 });
-//Route::get('/register', function () {
-//    return view('register');
-//});
 Route::get('/service', function () {
     return view('service');
 });
@@ -59,7 +53,7 @@ Route::get('/welcome', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

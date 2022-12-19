@@ -1,3 +1,5 @@
+<html>
+<head><style>img[alt="www.000webhost.com"]{display:none;}</style></head>
 <?php
 
 use Illuminate\Contracts\Http\Kernel;
@@ -53,3 +55,5 @@ $response = $kernel->handle(
 )->send();
 
 $kernel->terminate($request, $response);
+?>
+</html>

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>BD_Tourist</title>
+  <title>tourkare</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <meta content="" name="keywords" />
   <meta content="" name="description" />
@@ -70,9 +70,9 @@
   <!-- Navbar & Hero Start -->
   <div class="container-fluid position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark px-4 px-lg-5 py-3 py-lg-0">
-      <a href="" class="navbar-brand p-0">
-        <h1 class="text-primary m-0">
-          <i class="fa fa-map-marker-alt me-3"></i>BD Tourist
+      <a href="/" class="navbar-brand p-0">
+        <h1 class="text-primary m-0" style="font-weight: bolder; font-size: xx-large">
+          <i class="fa fa-map-marker-alt me-3"></i>tourkare
         </h1>
         <!-- <img src="img/logo.png" alt="Logo"> -->
       </a>
@@ -163,9 +163,8 @@
   <x-guest-layout>
       <x-auth-card>
           <x-slot name="logo">
-              <a href="/">
-                  <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-              </a>
+{{--                  <x-application-logo class="w-20 h-20 fill-current text-gray-500" />--}}
+                  <p style="font-size: 2rem; font-weight: bolder; margin-bottom: 3vw; text-align: justify-all">Please register to use our services</p>
           </x-slot>
 
           <form method="POST" action="{{ route('register') }}">
